@@ -68,6 +68,9 @@ $app->group([
     $app->post('assignment', 'AssignmentsController@add');
     $app->put('assignment/{id}', 'AssignmentsController@put');
     $app->delete('assignment/{id}', 'AssignmentsController@remove');
+    
+    $app->post('assignment/create', 'AssignmentsController@create');
+    $app->post('assignment/changestate', 'AssignmentsController@changeState');
 
     /**
      * Routes for resource group-workshop

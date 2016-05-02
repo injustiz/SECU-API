@@ -15,7 +15,11 @@ class AssignmentSeeder extends DatabaseSeeder
                 'assignment_description' => $faker->text($maxNbChars = 200),
                 'assignment_type' => $faker->randomElement($array = array ('exam','lesson','quiz')),
                 'assignment_date' => $faker->numberBetween(0,10),
-                'public_assignment' => $faker->dateTime($max = 'now')
+                'public_assignment' => $faker->dateTime($max = 'now'),
+                'status' => 1,
+                'deadline' => $faker->dateTime($max = 'now'),
+                'time_limit' => $faker->dateTime($max = 'now'),
+                'instruction' => $faker->text($maxNbChars = 200),
             ]);
         }
     }
