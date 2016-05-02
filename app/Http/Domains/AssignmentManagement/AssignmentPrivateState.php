@@ -2,9 +2,9 @@
 
 use App\Http\Domains\AssignmentManagement\AssignmentStateInterface;
 use App\Http\Domains\AssignmentManagement\AssignmentStateOption;
-use App\Http\Domains\AssignmentManagement\AssignmentPrivateState;
+use App\Http\Domains\AssignmentManagement\AssignmentPublishedState;
 
-class AssignmentDraftState implements AssignmentStateInterface
+class AssignmentPrivateState implements AssignmentStateInterface
 {
     private static $_instance;
     
@@ -13,11 +13,11 @@ class AssignmentDraftState implements AssignmentStateInterface
     }
     
     function getStateId(){
-        return AssignmentStateOption::DRAFT_STATE;
+        return AssignmentStateOption::PUBLISHED_STATE;
     }
     
     public function goNext($context, $target){
-        $context->setState(AssignmentPrivateState::getInstance());
+        $context->setState(AssignmentPublishedState::getInstance());
         $context->updateStatus();
     }
     
@@ -32,7 +32,7 @@ class AssignmentDraftState implements AssignmentStateInterface
     public static function getInstance(){
         if(!isset(self::$_instance))
         {
-            self::$_instance = new AssignmentDraftState();
+            self::$_instance = new AssignmentPrivateState();
         }
         return self::$_instance;
     }

@@ -1,10 +1,10 @@
 <?php namespace App\Http\Domains\AssignmentManagement;
 
-use App\Http\Domains\AssignmentManagement\AssignmentStateInterface;
-use App\Http\Domains\AssignmentManagement\AssignmentStateOption;
-use App\Http\Domains\AssignmentManagement\AssignmentPrivateState;
+use App\Http\Domains\AssignmentManagement\AttemptAssignmentStateInterface;
+use App\Http\Domains\AssignmentManagement\AtemptAssignmentStateOption;
+use App\Http\Domains\AssignmentManagement\AttemptAssignmentFinishState;
 
-class AssignmentDraftState implements AssignmentStateInterface
+class AttemptAssignmentGradingState implements AttemptAssignmentStateInterface
 {
     private static $_instance;
     
@@ -13,11 +13,11 @@ class AssignmentDraftState implements AssignmentStateInterface
     }
     
     function getStateId(){
-        return AssignmentStateOption::DRAFT_STATE;
+        return AttemptAssignmentStateOption::GRADING_STATE;
     }
     
     public function goNext($context, $target){
-        $context->setState(AssignmentPrivateState::getInstance());
+        $context->setState(AttemptAssignmentFinishState::getInstance());
         $context->updateStatus();
     }
     
@@ -32,7 +32,7 @@ class AssignmentDraftState implements AssignmentStateInterface
     public static function getInstance(){
         if(!isset(self::$_instance))
         {
-            self::$_instance = new AssignmentDraftState();
+            self::$_instance = new AttemptAssignmentGradingState();
         }
         return self::$_instance;
     }

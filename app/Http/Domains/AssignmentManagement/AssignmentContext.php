@@ -2,17 +2,12 @@
 
 use App\Assignment;
 use App\Http\Domains\AssignmentManagement\AssignmentStateFactory;
+use App\Http\Domains\AssignmentManagement\AssignmentStateOption;
 use Illuminate\Support\Facades\DB;
 
 class AssignmentContext extends Assignment
 {
     private $currentState;
-    
-    function getState(){
-        if(isset($this->currentState))
-            return  $this->currentState->name;
-        return null;
-    }
     
     function goNext($target){
         if(isset( $this->currentState)){
@@ -34,20 +29,15 @@ class AssignmentContext extends Assignment
     
     public static function get($id){
         $assignmentContext = parent::find($id);
-        $isNullStatus = false;
-        if(!isset($id->status)){
-            $isNullStatus = true;
-        }
         $assignmetState = AssignmentStateFactory::getAssignmentState($assignmentContext->status);
         $assignmentContext->setState($assignmetState);
-        if($isNullStatus == true){
-            $assignmentContext->updateStatus();
-        }
-        
         return $assignmentContext;
     }
     
     public static function create(array $attributes = []){
+        if(!array_key_exists("status", $attributes)){
+            $attributes["status"] = AssignmentStateOption::DRAFT_STATE;
+        }
         $assignment = Assignment::create($attributes);
         $assignmentContext = self::get($assignment->assignment_id);
         

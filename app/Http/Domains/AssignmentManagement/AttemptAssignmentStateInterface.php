@@ -1,6 +1,6 @@
 <?php namespace App\Http\Domains\AssignmentManagement;
 
-interface AssignmentStateInterface
+interface AttemptAssignmentStateInterface
 {
     public function getStateId();
     

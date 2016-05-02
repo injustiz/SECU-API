@@ -69,8 +69,23 @@ $app->group([
     $app->put('assignment/{id}', 'AssignmentsController@put');
     $app->delete('assignment/{id}', 'AssignmentsController@remove');
     
+    //custom action
     $app->post('assignment/create', 'AssignmentsController@create');
     $app->post('assignment/changestate', 'AssignmentsController@changeState');
+    
+    
+    /**
+     * Routes for resource attempt assignment
+     */
+    $app->get('attempt-assignment', 'AttemptAssignmentsController@all');
+    $app->get('attempt-assignment/{id}', 'AttemptAssignmentsController@get');
+    $app->post('attempt-assignment', 'AttemptAssignmentsController@add');
+    $app->put('attempt-assignment/{id}', 'AttemptAssignmentsController@put');
+    $app->delete('attempt-assignment/{id}', 'AttemptAssignmentsController@remove');
+    
+    //custom action
+    $app->post('attempt-assignment/create', 'AttemptAssignmentsController@create');
+    $app->post('attempt-assignment/changestate', 'AttemptAssignmentsController@changeState');
 
     /**
      * Routes for resource group-workshop

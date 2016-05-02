@@ -1,9 +1,9 @@
 <?php namespace App\Http\Domains\AssignmentManagement;
 
-use App\Http\Domains\AssignmentManagement\AssignmentStateInterface;
-use App\Http\Domains\AssignmentManagement\AssignmentStateOption;
+use App\Http\Domains\AssignmentManagement\AttemptAssignmentStateInterface;
+use App\Http\Domains\AssignmentManagement\AtemptAssignmentStateOption;
 
-class AssignmentPublicState implements AssignmentStateInterface
+class AttemptAssignmentFinishState implements AttemptAssignmentStateInterface
 {
     private static $_instance;
     
@@ -12,12 +12,11 @@ class AssignmentPublicState implements AssignmentStateInterface
     }
     
     function getStateId(){
-        return AssignmentStateOption::PUBLIC_STATE;
+        return AttemptAssignmentStateOption::FINISH_STATE;
     }
     
     public function goNext($context, $target){
-        $context->setState(AssignmentDraftState::getInstance());
-        $context->updateStatus();
+
     }
     
     public function canChangeState($context){
@@ -31,7 +30,7 @@ class AssignmentPublicState implements AssignmentStateInterface
     public static function getInstance(){
         if(!isset(self::$_instance))
         {
-            self::$_instance = new AssignmentPublicState();
+            self::$_instance = new AttemptAssignmentFinishState();
         }
         return self::$_instance;
     }
