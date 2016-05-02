@@ -20,6 +20,9 @@ class CreateUserTable extends Migration
             $table->string('email', 30)->nullable();
             $table->string('firstname', 50)->nullable();
             $table->string('lastname', 80)->nullable();
+            $table->string('role', 30)->default("student");
+            $table->string('curriculum', 20)->default("SE");
+            $table->string('status', 20)->default("active");
             $table->text('token')->nullable();
             $table->dateTime('register_date')->nullable();
             $table->timestamp('last_update');

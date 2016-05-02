@@ -8,7 +8,7 @@ class User extends Model {
 
     protected $primaryKey = "user_id"; // Primary Key
 
-    protected $fillable = ["user_number", "username", "password", "email", "firstname", "lastname", "token", "register_date", "last_update"];  
+    protected $fillable = ["user_number", "username", "password", "email", "firstname", "lastname", "role", "curriculum", "status", "token", "register_date", "last_update"];  
 
     protected $dates = [];
 
