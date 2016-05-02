@@ -49,7 +49,7 @@ $app->group([
     $app->delete('offering-course/{id}', 'OfferingCoursesController@remove');
 
     // ตย. การสร้าง route สำหรับดึง assignment จาก offering-course
-    $app->get('offering-course/{courseId}/assignments','OfferingCoursesController@getOfferingCourseAndAssignments');   
+    $app->get('offering-course/{offeringCourseId}/assignments','OfferingCoursesController@getOfferingCourseAndAssignments');   
 
     /**
      * Routes for resource assignment-project
