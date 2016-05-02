@@ -8,7 +8,7 @@ class Assignment extends Model {
 
 	protected $primaryKey = "assignment_id";
 
-	protected $fillable = ["offering_course_id", "assignment_number", "assignment_name", "assignment_description", "assignment_type"];
+	protected $fillable = ["offering_course_id", "assignment_number", "assignment_name", "assignment_description", "assignment_type", "status", 'instruction' , 'deadline', 'time_limit'];
 
 	protected $dates = ["assignment_date", "pulbic_assignment"];
 

@@ -21,6 +21,10 @@ class CreateAssignmentTable extends Migration
             $table->string('assignment_type', 50)->nullable();
             $table->timestamp('assignment_date');
             $table->timestamp('public_assignment');
+            $table->tinyInteger('status')->nullable();
+            $table->text('instruction')->nullable();
+            $table->timestamp('deadline');
+            $table->integer('time_limit');
             $table->timestamps();
         });
     }
