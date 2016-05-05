@@ -8,7 +8,7 @@ class AttemptAssignmentsController extends Controller {
 
 	const MODEL = "App\AttemptAssignment";
 
-	use RESTMetaActions;
+	use RESTActions;
 	
 	/************************************************************
 	 *     Addition Custom function for each controller kub     *
